@@ -20,6 +20,7 @@
     <div id="app">
         @include('layouts.navbar')
         <main class="container py-4">
+            @include('layouts.messages')
             @yield('content')
         </main>
         @include('layouts.footer');
