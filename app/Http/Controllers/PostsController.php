@@ -87,11 +87,6 @@ class PostsController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        //Check if post exists before deleting
-        if (!isset($post)){
-            return redirect('/posts')->with('error', 'No Post Found');
-        }
-
         // Check for correct user
         if(auth()->user()->id !==$post->user_id){
             return redirect('/posts')->with('error', 'Unauthorized Page');
@@ -109,7 +104,18 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
+        $post = Post::find($id);
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->save();
+
+        return redirect('/posts')->with('success', 'Post Updated');
     }
 
     /**
@@ -120,6 +126,14 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        // Check for correct user
+        if(auth()->user()->id !==$post->user_id){
+            return redirect('/posts')->with('error', 'Unauthorized Page');
+        }
+
+        $post->delete();
+        return redirect('/posts')->with('success', 'Post Removed');
     }
 }
