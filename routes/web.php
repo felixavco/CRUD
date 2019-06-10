@@ -6,7 +6,4 @@ Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-// Route::resource('post', 'PostsController');
-Route::resource('post', 'PostsController');
-
-
+Route::resource('posts', 'PostsController');

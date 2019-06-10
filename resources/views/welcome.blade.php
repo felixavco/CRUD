@@ -5,8 +5,7 @@
     @forelse($posts as $post)
         <h3>{{ $post->title }}</h3>
     @empty
-        <h3>No hay nada</h3>
+        <h3>No post available</h3>
     @endforelse
-
 @endsection
 
