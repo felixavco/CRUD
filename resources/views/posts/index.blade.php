@@ -2,19 +2,19 @@
 @section('title', 'Welcome')
 
 @section('content')
-<nav aria-label="breadcrumb mb-3">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Blog</li>
-    </ol>
-</nav>
+@auth
+    <nav aria-label="breadcrumb mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Blog</li>
+        </ol>
+    </nav>
+@endauth
+
 <div class="row">
     @forelse($posts as $post)
         <div class="col-12 col-md-6 col-lg-4 mb-3">
             <div class="card" style="width: 100%">
-                <a href="/posts/{{$post->id}}">
-                    <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZjVLtJDgMTOExfMHsTZuT4G5cAmaRT0N0vnoVbblrTTKkwSOb" alt="Card image cap">
-                </a>
                 <div class="card-body">
                     <a href="/posts/{{$post->id}}">
                         <h5 class="card-title">{{ $post->title }}</h5>
@@ -35,5 +35,10 @@
         <h3>No post available</h3>
     @endforelse
 </div>
+
+<div class="d-flex justify-content-center">
+    {{$posts->links()}}
+</div>
+
 
 @endsection

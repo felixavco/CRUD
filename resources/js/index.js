@@ -1,6 +1,7 @@
 import Axios from "axios";
 
 const deleteBtn = document.querySelector('.btn-delete');
+const alertBox = document.querySelector('.alert');
 
 if (deleteBtn) {
     deleteBtn.addEventListener('click', (e) => {
@@ -9,16 +10,20 @@ if (deleteBtn) {
             const cardElement = e.target.parentElement.parentElement.parentElement;
             Axios
                 .delete(`/posts/${post_id}`)
-                .then((res) => {
-                    if (res.status === 200) {
-                        cardElement.remove();
-                    }
+                .then(() => {
+                    cardElement.remove();
                 })
                 .catch((err) => {
-                    console.log(err);
+                    console.error(err);
                 });
         }
 
     });
+}
+
+if(alertBox) {
+    setTimeout(() => {
+        alertBox.remove();
+    }, 2000);
 }
 

@@ -37003,21 +37003,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 var deleteBtn = document.querySelector('.btn-delete');
+var alertBox = document.querySelector('.alert');
 
 if (deleteBtn) {
   deleteBtn.addEventListener('click', function (e) {
     if (confirm('Are you sure?')) {
       var post_id = e.target.attributes[0].value;
       var cardElement = e.target.parentElement.parentElement.parentElement;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/posts/".concat(post_id)).then(function (res) {
-        if (res.status === 200) {
-          cardElement.remove();
-        }
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/posts/".concat(post_id)).then(function () {
+        cardElement.remove();
       })["catch"](function (err) {
-        console.log(err);
+        console.error(err);
       });
     }
   });
+}
+
+if (alertBox) {
+  setTimeout(function () {
+    alertBox.remove();
+  }, 2000);
 }
 
 /***/ }),

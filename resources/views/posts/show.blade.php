@@ -11,18 +11,12 @@
     </nav>
     <h2 class="display-4 text-center mb-3">{{ $post->title}}</h2>
     <div class="row">
-        <div class="col 12 col-md-6">
-            <p class="lead">{{ $post->body }}</p>
-        </div>
-        <div class="col 12 col-md-6">
-                <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZjVLtJDgMTOExfMHsTZuT4G5cAmaRT0N0vnoVbblrTTKkwSOb" alt="Card image cap">
+        <div class="col-12 col-md-6 mx-auto">
+            <p class="lead my-3">{{ $post->body }}</p>
+            <h6>Posted by {{}}</h6>
+            <small>
+                Posted @ {{ $post->created_at}}
+            </small>
         </div>
     </div>
-
-    <form action="/posts/{{$post->id}}" method="POST">
-        @csrf
-        @method('delete')
-        <button class="btn btn-danger" type="submit">Delete</button>
-    </form>
-
 @endsection
