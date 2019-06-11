@@ -24,7 +24,7 @@
                         @if($post->user_id === Auth::user()->id)
                             <div class="d-flex justify-content-center">
                                 <a href="/posts/{{$post->id}}/edit" class="btn btn-primary btn-edit mr-2">Edit <i class="fas fa-pencil-alt"></i></a>
-                                <button class="btn btn-danger btn-delete ml-2">Delete <i class="far fa-trash-alt"></i></button>
+                                <button data-post_id="{{$post->id}}" class="btn btn-danger btn-delete ml-2">Delete <i class="far fa-trash-alt"></i></button>
                             </div>
                         @endif
                     @endauth

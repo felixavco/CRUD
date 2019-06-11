@@ -11,7 +11,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a href="/post" class="nav-link">Blog</a>
+                    <a href="/posts" class="nav-link">Blog</a>
                 </li>
             </ul>
 

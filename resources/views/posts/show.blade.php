@@ -19,5 +19,10 @@
         </div>
     </div>
 
+    <form action="/posts/{{$post->id}}" method="POST">
+        @csrf
+        @method('delete')
+        <button class="btn btn-danger" type="submit">Delete</button>
+    </form>
 
 @endsection

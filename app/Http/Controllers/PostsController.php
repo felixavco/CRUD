@@ -134,6 +134,6 @@ class PostsController extends Controller
         }
 
         $post->delete();
-        return redirect('/posts')->with('success', 'Post Removed');
+        return ['message' => "post deleted"];
     }
 }

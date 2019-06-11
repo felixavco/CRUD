@@ -36994,10 +36994,31 @@ if (token) {
 /*!*******************************!*\
   !*** ./resources/js/index.js ***!
   \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-console.log("TESTAFDFDAS");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+var deleteBtn = document.querySelector('.btn-delete');
+
+if (deleteBtn) {
+  deleteBtn.addEventListener('click', function (e) {
+    if (confirm('Are you sure?')) {
+      var post_id = e.target.attributes[0].value;
+      var cardElement = e.target.parentElement.parentElement.parentElement;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/posts/".concat(post_id)).then(function (res) {
+        if (res.status === 200) {
+          cardElement.remove();
+        }
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
+  });
+}
 
 /***/ }),
 
