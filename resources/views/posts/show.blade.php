@@ -13,7 +13,6 @@
     <div class="row">
         <div class="col-12 col-md-6 mx-auto">
             <p class="lead my-3">{{ $post->body }}</p>
-            <h6>Posted by {{}}</h6>
             <small>
                 Posted @ {{ $post->created_at}}
             </small>

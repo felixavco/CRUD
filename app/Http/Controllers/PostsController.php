@@ -8,7 +8,7 @@ use App\Post;
 class PostsController extends Controller
 {
 
-     /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -88,7 +88,7 @@ class PostsController extends Controller
         $post = Post::findOrFail($id);
 
         // Check for correct user
-        if(auth()->user()->id !==$post->user_id){
+        if (auth()->user()->id !== $post->user_id) {
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
 
@@ -111,6 +111,12 @@ class PostsController extends Controller
         ]);
 
         $post = Post::find($id);
+
+        // Check for correct user
+        if (auth()->user()->id !== $post->user_id) {
+            return redirect('/posts')->with('error', 'Unauthorized Page');
+        }
+
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->save();
@@ -129,7 +135,7 @@ class PostsController extends Controller
         $post = Post::findOrFail($id);
 
         // Check for correct user
-        if(auth()->user()->id !==$post->user_id){
+        if (auth()->user()->id !== $post->user_id) {
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
 
